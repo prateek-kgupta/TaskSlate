@@ -16,7 +16,7 @@
     <p>
       User role: <span>{{ user.user_type }}</span>
     </p>
-    <button @click="deleteUser(user)">Delete User</button>
+    <button @click="deleteUser(user)" :hidden="user.username === 'prateek' ? true : false">Delete User</button>
   </div>
 </template>
 

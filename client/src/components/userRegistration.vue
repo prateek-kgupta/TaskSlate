@@ -11,7 +11,12 @@
       <input type="text" v-model="formData.lastname" placeholder="Lastname" />
     </div>
     <div class="inputField">
-      <label>Email</label>
+      <label
+        >Email
+        <label v-if="unavailableEmail" class="invalidInput"
+          >*Email is already in use</label
+        ></label
+      >
       <input type="text" v-model="formData.email" placeholder="Email" />
     </div>
     <div class="inputField">
@@ -68,6 +73,7 @@ export default {
       retypedPassword: "",
       unmatchedPass: false,
       unavailableUsername: false,
+      unavailableEmail: false,
     };
   },
   methods: {
@@ -94,6 +100,8 @@ export default {
             if (response.data === "Insertion successfull") {
               this.resetForm();
               alert("Registered Successfully");
+            } else if (response.data === "Email already in use") {
+              this.unavailableEmail = true;
             } else {
               this.unavailableUsername = true;
             }
@@ -127,6 +135,9 @@ export default {
     "formData.username"() {
       this.unavailableUsername = false;
     },
+    "formData.email"(){
+      this.unavailableEmail = false;
+    }
   },
 };
 </script>

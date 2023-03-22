@@ -42,6 +42,7 @@ import headBar from "./headBar.vue";
 import { v4 as uuidv4 } from "uuid";
 import authenticate from '../mixins/authenticate.js'
 
+
 export default {
   name: "taskPage",
   data() {
@@ -194,9 +195,6 @@ export default {
       console.log(response.data);
       this.tasks = [...response.data];
     });
-  },
-  beforeUnmount() {
-    console.log("Adios");
   },
 };
 </script>

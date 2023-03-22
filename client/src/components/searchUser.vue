@@ -31,6 +31,7 @@ import headBar from "./headBar.vue";
 import axios from "axios";
 import authenticate from '../mixins/authenticate.js'
 
+
 export default {
   name: "addUser",
   data() {

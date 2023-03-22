@@ -75,6 +75,14 @@ export default {
       this.login = !this.login;
     },
   },
+  watch:{
+    username(){
+      this.messageClass = "hide"
+    },
+    password(){
+      this.messageClass = "hide"
+    }
+  }
 };
 </script>
 

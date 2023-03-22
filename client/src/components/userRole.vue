@@ -16,7 +16,7 @@
     <p>
       User role: <span>{{ user.user_type }}</span>
     </p>
-    <button @click="changeUserRole(user)">
+    <button @click="changeUserRole(user)" :hidden="user.username === 'prateek' ? true : false">
       Change to {{ user.user_type === "admin" ? "user" : "admin" }}
     </button>
   </div>

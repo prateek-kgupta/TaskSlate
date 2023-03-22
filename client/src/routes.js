@@ -7,6 +7,7 @@ import searchUser from './components/searchUser.vue'
 import userRole from './components/userRole.vue'
 import userDelete from './components/userDelete.vue'
 import usersTask from './components/usersTask.vue'
+import pageNotFound from './components/pageNotFound.vue'
 
 const routes = [
     {
@@ -48,6 +49,11 @@ const routes = [
         name: 'usersTask',
         component: usersTask,
         path: '/usersTask/:username'
+    },
+    {
+        name: 'pageNotFound',
+        component: pageNotFound,
+        path: '/:pathMatch(.*)*'
     }
 ]
 

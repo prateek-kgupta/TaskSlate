@@ -38,15 +38,23 @@ router.post('/', (req, res) => {
 router.post('/post', (req, res) => {
     const userData = req.body;
     console.log(userData);
+    client.query(`SELECT * FROM users WHERE email='${userData.email}'`, (err, result)=>{
+        if(!err){
+            if(result.rows[0]){
+                return res.send('Email already in use')
+            }
+        }
+    })
+    client.end;
     const sqlQuery = `INSERT INTO users (username, firstname, lastname, email, password) 
     VALUES ('${userData.username}', '${userData.firstname}', '${userData.lastname}', '${userData.email}', '${userData.password}')`
     client.query(sqlQuery, (err, result) => {
         if (!err) {
             console.log(result);
-            res.send('Insertion successfull')
+            return res.send('Insertion successfull')
         }
         else {
-            res.send('Username already taken')
+            return res.send('Username already taken')
         }
     })
     client.end;
