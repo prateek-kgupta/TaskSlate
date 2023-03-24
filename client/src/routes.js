@@ -8,6 +8,7 @@ import userRole from './components/userRole.vue'
 import userDelete from './components/userDelete.vue'
 import usersTask from './components/usersTask.vue'
 import pageNotFound from './components/pageNotFound.vue'
+import unauthorisedUser from './components/unauthorisedUser.vue'
 
 const routes = [
     {
@@ -49,6 +50,11 @@ const routes = [
         name: 'usersTask',
         component: usersTask,
         path: '/usersTask/:username'
+    },
+    {
+        name: 'unauthorisedUser',
+        component: unauthorisedUser,
+        path: '/unauthorisedUser'
     },
     {
         name: 'pageNotFound',

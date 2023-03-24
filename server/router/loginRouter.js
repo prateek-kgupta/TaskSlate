@@ -60,5 +60,11 @@ router.post('/post', (req, res) => {
     client.end;
 })
 
-
+router.get('/userType/:username', (req, res)=>{
+    client.query(`SELECT user_type FROM users WHERE username='${req.params.username}'`, (err, result)=>{
+        if(!err){
+            return res.send(result.rows[0].user_type)
+        }
+    })
+})
 module.exports = router

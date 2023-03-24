@@ -41,7 +41,7 @@
 
 <script>
 import headBar from "./headBar.vue";
-import authenticate from '../mixins/authenticate.js'
+import authenticate from '../mixins/adminAuth.js'
 
 export default {
   name: "adminVue",

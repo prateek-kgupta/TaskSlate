@@ -29,7 +29,7 @@
 <script>
 import headBar from "./headBar.vue";
 import axios from "axios";
-import authenticate from '../mixins/authenticate.js'
+import authenticate from '../mixins/adminAuth.js'
 
 
 export default {
