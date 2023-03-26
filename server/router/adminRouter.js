@@ -1,9 +1,11 @@
 const express = require('express')
 const client = require('../connection/connection')
 const bodyParser = require('body-parser')
+const authenticate = require('../adminTokenVerification.js')
 
 const router = express.Router()
 router.use(bodyParser.json())
+router.use(authenticate)
 
 //Complete list of users
 router.get('/get', (req, res) => {

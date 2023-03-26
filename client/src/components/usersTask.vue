@@ -39,6 +39,8 @@ export default {
   mounted() {
     this.username = this.$route.params.username;
     const url = `http://localhost:3000/user/viewTasks/'${this.username}'`;
+    const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
     axios
       .get(url)
       .then((response) => {

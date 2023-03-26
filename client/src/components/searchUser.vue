@@ -47,6 +47,8 @@ export default {
   methods: {
     searchUser() {
       const url = `http://localhost:3000/admin/'${this.searchParameter}'`;
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios.get(url).then((response) => {
         this.searchResult = [...response.data];
       });

@@ -43,6 +43,8 @@ export default {
     changeUserRole(user) {
       user.user_type = user.user_type === "admin" ? "user" : "admin";
       const url = `http://localhost:3000/admin/userRole`;
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios
         .put(url, {
           username: user.username,
@@ -53,6 +55,8 @@ export default {
 
     searchUser() {
       const url = `http://localhost:3000/admin/'${this.username}'`;
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios.get(url).then((response) => {
         this.searchResult = [...response.data];
       });

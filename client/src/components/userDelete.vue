@@ -40,6 +40,8 @@ export default {
   methods: {
     searchUser() {
       const url = `http://localhost:3000/admin/'${this.username}'`;
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios.get(url).then((response) => {
         this.searchResult = [...response.data];
       });
@@ -49,6 +51,8 @@ export default {
         (t) => t.username !== user.username
       );
       const url = `http://localhost:3000/admin/delete/${user.username}`;
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios.delete(url).then((response) => console.log(response.data));
     },
   },

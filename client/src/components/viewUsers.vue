@@ -42,6 +42,8 @@ export default {
   },
   mounted() {
     const url = `http://localhost:3000/admin/get`;
+    const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
     axios.get(url).then((response) => {
       this.userList = [...response.data];
     });

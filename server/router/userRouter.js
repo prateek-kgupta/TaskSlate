@@ -1,9 +1,11 @@
 const express = require('express')
 const client = require('../connection/connection')
 const bodyParser = require('body-parser')
+const authenticate = require('../verifyToken.js')
 
 const router = express.Router()
 router.use(bodyParser.json())
+router.use(authenticate)
 
 // View all tasks
 router.get('/viewTasks/:username', (req, res) => {

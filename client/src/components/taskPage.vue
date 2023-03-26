@@ -132,6 +132,8 @@ export default {
           this.currentlyEditing.task_date = null;
         }
         this.currentlyEditing.task = this.newTask.task;
+        const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
         axios
           .put("http://localhost:3000/user/editTask", this.newTask)
           .then((response) => console.log(response.data));
@@ -147,6 +149,8 @@ export default {
     deleteTask(id) {
       console.log(id);
       this.tasks = this.tasks.filter((t) => t.task_id !== id);
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios
         .delete(`http://localhost:3000/user/delete/${id}`)
         .then((response) => console.log(response.data));
@@ -158,6 +162,8 @@ export default {
       } else {
         task.status = "complete";
       }
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios
         .put("http://localhost:3000/user/editStatus", {
           task_id: task.task_id,
@@ -178,6 +184,8 @@ export default {
       });
       console.log("2:", this.tasks);
       const url = `http://localhost:3000/user/addTasks`;
+      const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
       axios
         .post(url, this.newTask)
         .then(() => console.log("Insertion Successful"))
@@ -191,6 +199,8 @@ export default {
   mounted() {
     this.newTask.username = localStorage.getItem("username");
     const url = `http://localhost:3000/user/viewTasks/'${this.newTask.username}'`;
+    const token = localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = token;
     axios.get(url).then((response) => {
       console.log(response.data);
       this.tasks = [...response.data];
